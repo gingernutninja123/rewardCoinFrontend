@@ -1,0 +1,33 @@
+body{
+    background-color: #f5f5f5;
+}
+
+.signupForm{
+
+}
+
+.teamCodeTitle{
+    padding-top: 200px;
+    padding-bottom: 10px;
+}
+
+
+.emailLabel{
+    padding-left: 200px;
+}
+
+.linkSignUp{
+    font-size: 15px;
+    color:#999999;
+
+}
+
+#submitButton{
+    padding-right: 146px;
+    padding-left: 146px;
+}
+
+.alert-warning{
+    background-color:#007bff;
+    color: white;
+}

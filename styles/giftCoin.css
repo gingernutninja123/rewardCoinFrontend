@@ -1,0 +1,95 @@
+img{
+    width: 30px;
+    height:auto;
+
+}
+
+.navbar-brand{
+    margin-left: 10px;
+}
+
+.searchbar{
+
+}
+
+.bar{
+    padding-right: 250px;
+    margin-left: 200px;
+}
+
+.dropdown-toggle{
+    color:white;
+
+}
+
+.dropdown{
+    margin-left: 300px;
+    margin-right: 20px;
+}
+
+.card-img-top{
+    width:255px;
+    height:auto;
+}
+
+.card{
+    margin-top: 50px;
+    margin-left:10px;
+
+}
+
+.cardOpt{
+    margin-left: 50px;
+}
+
+
+.grid {
+    align-items: stretch;
+}
+
+.coin{
+    margin-left: 90px;
+}
+
+.card-text{
+    text-align: center;
+}
+
+.pilecoins{
+    width:300px;
+    height:auto;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width:310px;
+    margin-left:10px;
+    height:auto;
+    opacity: 0;
+    transition: .5s ease;
+    background-color:#007bff;
+}
+
+.col-3 {
+    position: relative;
+    display: inline-block;
+}
+
+.col-4:hover .overlay {
+    opacity: 1;
+}
+
+.pileText{
+    color: white;
+    text-align: center;
+    margin-top:70px;
+}
+
+.submitButton{
+    width: 150px;
+    margin-left: 270px;
+}

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <title></title>
+    <link rel="stylesheet" href="../styles/login.css">
+
+</head>
+
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+
+        </div>
+        <div class="col-sm">
+            <img src="../images/rewardfirelogonotext.png" alt="">
+            <h2 class="loginHeader">Login</h2>
+            <form action="/loginNow" method="post">
+            <div class="loginForm">
+                <div class="form-group">
+                    <input name="email" class="form-control" id="emailAddress" placeholder="Email Address">
+                </div>
+                <div class="form-group">
+                    <input name="password" type="password" class="form-control"  placeholder="Password">
+                </div>
+
+                <button type="submit" class="btn btn-primary" id="submitButton">Submit</button>
+                <p></p>
+                <p class="linkSignUp">Don't have an account?   <a href="http://localhost:8080/signup">Sign up now</a></p>
+
+            </div>
+
+        </form>
+            <% if (!errors==""){%>
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <%=errors%>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <%}%>
+        </div>
+        <div class="col-sm">
+
+        </div>
+    </div>
+</div>
+
+
+
+
+</body>
+</html>

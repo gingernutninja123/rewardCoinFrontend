@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+            crossorigin="anonymous"></script>
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/styles/products.css">
+
+    <script>
+        var error='<%=error%>';
+        if(error!=''){
+            errorAlert(error);
+        }
+        else{
+            console.log(error);
+        }
+
+        function errorAlert(message){
+            alert(message)
+        }
+    </script>
+
+</head>
+
+
+<body>
+
+<nav class="navbar navbar-dark bg-primary">
+
+    <a class="navbar-brand" href="http://localhost:8080/feed/<%= employeeId %>"><img
+                src="../images/rewardfirelogonotext.png" alt=""></a>
+    <div class="dropdown">
+        <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= firstName %>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="http://localhost:8080/feed/team/<%= employeeId %>">Feed</a>
+            <a class="dropdown-item" href="http://localhost:8080/profile/<%= employeeId %>">My Profile</a>
+            <a class="dropdown-item" href="http://localhost:8080/signout">Sign Out</a>
+
+        </div>
+    </div>
+
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2 cardcol">
+            <div class="card" style="width: 16rem;">
+                <img src="\images/profilepic.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <img class="coin" src="\images/coin.png" alt="">
+                    <p class="card-text">Coins: <%= coinCount %></p>
+                    <p></p>
+                    <p>Email: <%= email %></p>
+                    <p>First Name: <%= firstName %></p>
+                    <p>Last Name: <%= lastName %></p>
+                    <p>Team: <%= teamName %></p>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-10">
+            <div class="card cardOpt" style="width: 70rem;">
+                <div class="card-body">
+                    <div class="container">
+                        <h3><%=vendorName%> Page</h3>
+                        <% for(var i = 0;i < products.length;i += 3){ %>
+                            <div class="row">
+                                <% if(i < products.length){ %>
+                                <div class="col-4">
+                                    <div class="card" style="width: 18rem;">
+                                        <img class="card-img-top" id="product"
+                                             src="\images/productPlaceholder.png"
+                                             alt="Card image cap">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><%=products[i].productName%></h5>
+                                            <p><%=products[i].description%></p>
+                                            <b><h5 class="price"><%=products[i].price%> Coin</h5></b>
+                                            <a id="buy" href="http://localhost:8080/purchase/<%=employeeId%>/<%=products[i].productID%>" class="btn btn-primary">Buy</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% } %>
+                                <% if(i + 1 < products.length){ %>
+                                <div class="col-4">
+                                    <div class="card" style="width: 18rem;">
+                                        <img class="card-img-top" id="product"
+                                             src="\images/productPlaceholder.png"
+                                             alt="Card image cap">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><%=products[i+1].productName%></h5>
+                                            <p><%=products[i+1].description%></p>
+                                            <b><h5 class="price"><%=products[i+1].price%> Coin</h5></b>
+                                            <a id="buy" href="http://localhost:8080/purchase/<%=employeeId%>/<%=products[i+1].productID%>" class="btn btn-primary">Buy</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <%}%>
+                                <%if (i+2<products.length){%>
+                                <div class="col-4">
+                                    <div class="card" style="width: 18rem;">
+                                        <img class="card-img-top" id="product"
+                                             src="\images/productPlaceholder.png"
+                                             alt="Card image cap">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><%=products[i+2].productName%></h5>
+                                            <p><%=products[i+2].description%></p>
+                                            <b><h5 class="price"><%=products[i+2].price%> Coin</h5></b>
+                                            <a id="buy" href="http://localhost:8080/purchase/<%=employeeId%>/<%=products[i+2].productID%>" class="btn btn-primary">Buy</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <%}%>
+                            </div>
+                        <% } %>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="../styles/profileScreen.css">
+    </head>
+
+
+  <body>
+
+    <nav class="navbar navbar-dark bg-primary">
+
+    <a class="navbar-brand" href="#"><img src="../images/rewardfirelogonotext.png" alt=""></a>
+
+   <div class="dropdown">
+     <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+       <%=firstName%>
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" href="http://localhost:8080/feed/team/<%= employeeId %>">Feed</a>
+    <a class="dropdown-item" href="http://localhost:8080/profile/<%=employeeId%>">My Profile</a>
+    <a class="dropdown-item" href="http://localhost:8080/signout">Sign Out</a>
+
+  </div>
+</div>
+
+</nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-2 cardcol">
+          <div class="card" style="width: 16rem;">
+            <img src="../images/profilepic.png" class="card-img-top" alt="...">
+            <div class="card-body">
+              <img class="coin" src="../images/coin.png" alt="">
+              <p class="card-text">Coins: <%=coinCount%></p>
+              <p></p>
+              <p>Email: <%=email%></p>
+              <p>First Name: <%=firstName%></p>
+              <p>Last Name: <%=lastName%></p>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-10">
+        <div class="card cardOpt" style="width: 70";>
+            <div class="card-body">
+              <div class="container">
+                    <h3>My Coins</h3>
+                  <% if (myCoins.length==0){%>
+                        <h2>You currently have 0 coins</h2>
+                  <%}%>
+
+                  <% for(var i=0; i<myCoins.length; i++) { %>
+                <% if(myCoins[i].Status=="DELIVERED" || myCoins[i].Status=="PENDING_APPROVALS") { %>
+                  <div class="card cardOpt" style="width: 90">
+                  <div class="card-body">
+                  <h3>Reward Coin</h3>
+                  <p>Type: <%=myCoins[i].Type%></p>
+                  <b><p>Description</p></b>
+                  <p><%=myCoins[i].Description%></p>
+                  <a href="http://localhost:8080/viewProfile/<%=employeeId%>/<%=myCoins[i].Sponsor%>"><p>Sponsor: <%=myCoins[i].SponsorName%></p></a>
+                  <p>Approved by:</p>
+                  <% for(var n=0; n<myCoins[i].Approvals.length; n++) {%>
+                  <a href="http://localhost:8080/viewProfile/<%=employeeId%>/<%=myCoins[i].Approvals[n].approvalID%>"><%=myCoins[i].Approvals[n].approvalName%></a>
+                      <%}%>
+                  </div>
+                  </div>
+
+                <% } else if(myCoins[i].Status=="GIFTED"){ %>
+                  <div class="card cardOpt" style="width: 90">
+                  <div class="card-body">
+                    <h3>Gifted Coin</h3>
+                    <a href="http://localhost:8080/viewProfile/<%=employeeId%>/<%=myCoins[i].Sponsor%>"><p>Gifted by: <%=myCoins[i].SponsorName%></p></a>
+                  </div>
+                  </div>
+                      <% } else if(myCoins[i].Status=="CHALLENGE_COMPLETED"){ %>
+                      <div class="card cardOpt" style="width: 90">
+                          <div class="card-body">
+                              <h3>Coin from Challenge</h3>
+                              <a href="http://localhost:8080/viewProfile/<%=employeeId%>/<%=myCoins[i].Sponsor%>"><p>Coin from: <%=myCoins[i].SponsorName%></p></a>
+                          </div>
+                      </div>
+                      <% } else if(myCoins[i].Status == "PENDING_APPROVAL") { %>
+                          <div class="card cardOpt" style="width: 90">
+                              <div class="card-body">
+                                  <h3>Reward Coin Pending Approval</h3>
+                                  <p>Type: <%= myCoins[i].Type %></p>
+                                  <b><p>Description</p></b>
+                                  <p><%= myCoins[i].Description %></p>
+                                  <p>Recipent: <%=myCoins[i].RecipentName%></p>
+
+                                  <a href="http://localhost:8080/viewProfile/<%= employeeId %>/<%= myCoins[i].Sponsor %>">
+                                      <p>Sponsor: <%= myCoins[i].SponsorName %></p></a>
+
+                                  <p>Approved by:</p>
+                                  <% for(var n = 0; n < myCoins[i].Approvals.length; n++) { %>
+                                      <a href="http://localhost:8080/viewProfile/<%= employeeId %>/<%= myCoins[i].Approvals[n].approvalID %>"><%= myCoins[i].Approvals[n].approvalName %>
+                                          ,</a>
+                                  <% } %>
+                              </div>
+                          </div>
+
+                      <% } %>
+                  <% } %>
+
+              </div>
+        </div>
+            </div>
+        </div>
+
+      </div>
+
+      </div>
+    </div>
+  </body>
+</html>

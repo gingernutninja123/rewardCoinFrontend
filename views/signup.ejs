@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <title></title>
+    <head>
+        <link rel="stylesheet" href="../styles/signup.css">
+    </head>
+</head>
+
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm">
+
+        </div>
+        <div class="col-sm">
+            <h2 class="signupHeader">Sign Up</h2>
+            <form action="/teamSelect" method="post">
+                <div class="signupForm">
+                    <div class="form-group">
+                        <input  name="email" class="form-control" id="emailAddress" placeholder="Email Address">
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input name="firstName" class="form-control" id="firstName" placeholder="First Name">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <input name="lastName" class="form-control" id="lastName" placeholder="Last Name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input name="password1" type="password" class="form-control"  placeholder="Password">
+                    </div>
+
+                    <div class="form-group">
+                        <input  name="password2" type="password" class="form-control"  placeholder="Comfirm Password">
+                    </div>
+            </form>
+
+            <button  class="btn btn-primary" id="submitButton">Sign Up</button>
+
+        </div>
+        <p></p>
+        <% if (!errors==""){%>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <%=errors%>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <%}%>
+    </div>
+    <div class="col-sm">
+
+    </div>
+</div>
+
+
+
+
+
+</body>
+</html>
